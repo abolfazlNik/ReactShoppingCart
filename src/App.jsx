@@ -1,5 +1,5 @@
 function App() {
-  return<>first commit</>
+  return <>HOME SHOP</>;
 }
 
-export default App
+export default App;
