@@ -11,15 +11,18 @@ export const cartSlice = createSlice({
       const existItem = state.cart.findIndex(
         (cartIndex) => cartIndex.id === item.id
       );
-      console.log(existItem);
       if (existItem !== -1) {
         console.log("this is exist!");
       } else {
         state.cart.push({ ...item });
       }
     },
+    decreaseCart: (state, action) => {
+      const { id } = action.payload;
+      state.cart = state.cart.filter((item) => item.id !== id);
+    },
   },
 });
 
-export const { incrementCart } = cartSlice.actions;
+export const { incrementCart, decreaseCart } = cartSlice.actions;
 export default cartSlice.reducer;

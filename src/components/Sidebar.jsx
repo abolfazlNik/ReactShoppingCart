@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { BiCartAlt } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProductBox from "./ProductBox";
+import { decreaseCart } from "../store/slices/cartSlice";
 
 const Sidebar = () => {
   const cartItems = useSelector((state) => state.cart.cart);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const dispatch = useDispatch();
+  const removeCart = (product) => {
+    dispatch(decreaseCart({ id: product.id }));
+  };
 
   return (
     <div>
@@ -44,6 +49,8 @@ const Sidebar = () => {
                     key={item.id}
                     product={item}
                     showAddToCartButton={false}
+                    showRemoveCartButton={true}
+                    removeCart={removeCart}
                   />
                 ))}
               </>
