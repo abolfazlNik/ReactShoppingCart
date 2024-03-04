@@ -1,7 +1,13 @@
-import { BiSolidCartAdd } from "react-icons/bi";
+import { BiSolidCartAdd, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const ProductBox = ({ product, addToCart, showAddToCartButton = true }) => {
+const ProductBox = ({
+  product,
+  addToCart,
+  removeCart,
+  showAddToCartButton = true,
+  showRemoveCartButton = false,
+}) => {
   return (
     <div className="border border-gray-200 bg-white max-auto rounded-lg px-4 py-7 w-56 h-64 flex space-y-5 flex-col justify-center overflow-hidden">
       <Link to={`/product/${product.id}`}>
@@ -17,6 +23,11 @@ const ProductBox = ({ product, addToCart, showAddToCartButton = true }) => {
         {showAddToCartButton && (
           <button className="" onClick={() => addToCart(product)}>
             <BiSolidCartAdd className="text-2xl" />
+          </button>
+        )}
+        {showRemoveCartButton && (
+          <button className="" onClick={() => removeCart(product)}>
+            <BiX className="text-2xl" />
           </button>
         )}
       </div>
