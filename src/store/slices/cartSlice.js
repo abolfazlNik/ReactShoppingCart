@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem("cart")) || [],
 };
 export const cartSlice = createSlice({
   name: "cart",
@@ -12,14 +12,16 @@ export const cartSlice = createSlice({
         (cartIndex) => cartIndex.id === item.id
       );
       if (existItem !== -1) {
-        console.log("this is exist!");
+        alert("this is exist!");
       } else {
         state.cart.push({ ...item });
       }
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     decreaseCart: (state, action) => {
       const { id } = action.payload;
       state.cart = state.cart.filter((item) => item.id !== id);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
   },
 });
