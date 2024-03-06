@@ -12,7 +12,7 @@ const ProductDetails = () => {
     queryKey: ["product", id],
   });
   const dispatch = useDispatch();
-  
+
   const addToCart = (product) => {
     dispatch(incrementCart({ item: product }));
   };

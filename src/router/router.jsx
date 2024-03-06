@@ -3,6 +3,7 @@ import Products from "../pages/Products";
 import Layout from "../pages/Layout";
 import Checkout from "../pages/Checkout";
 import ProductDetail from "../pages/ProductDetails";
+import Todos from "../pages/Todos";
 import App from "../App";
 
 const router = createBrowserRouter([
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
         element: (
           <div>
             <ProductDetail />
+          </div>
+        ),
+      },
+      {
+        path: "/todos",
+        element: (
+          <div>
+            <Todos />
           </div>
         ),
       },

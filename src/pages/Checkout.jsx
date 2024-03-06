@@ -18,6 +18,7 @@ const Checkout = () => {
             product={item}
             showRemoveCartButton={true}
             removeCart={removeCart}
+            showAddToCartButton={false}
           />
         ))}
       </div>

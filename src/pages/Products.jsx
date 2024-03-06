@@ -1,20 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
+import { Fragment } from "react";
 import { getProducts } from "../api/products";
 import { useDispatch } from "react-redux";
 import { incrementCart } from "../store/slices/cartSlice";
+import { useQuery } from "@tanstack/react-query";
 import ProductBox from "../components/ProductBox";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { data, isLoading } = useQuery({
-    queryFn: getProducts,
-    queryKey: ["getProducts"],
-  });
-
   const addToCart = (product) => {
     dispatch(incrementCart({ item: product }));
   };
 
+  const { data, isLoading } = useQuery({
+    queryKey: ["getProducts"],
+    queryFn: getProducts,
+  });
   const skeletonItems = Array.from({ length: 20 }, (_, index) => index);
 
   return (
