@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 const links = [
   { title: "checkout", pathname: "/checkout" },
   { title: "products", pathname: "/products" },
+  { title: "todos", pathname: "/todos" },
 ];
 
 const Header = () => {
