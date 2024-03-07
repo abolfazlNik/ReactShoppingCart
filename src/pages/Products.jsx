@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { getProducts } from "../api/products";
 import { useDispatch } from "react-redux";
 import { incrementCart } from "../store/slices/cartSlice";
