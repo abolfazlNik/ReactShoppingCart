@@ -19,4 +19,3 @@ async function product(id) {
 }
 
 export { getProducts, product, getTodos };
-`
