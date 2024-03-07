@@ -14,6 +14,7 @@ const Products = () => {
     queryKey: ["getProducts"],
     queryFn: getProducts,
   });
+
   const skeletonItems = Array.from({ length: 20 }, (_, index) => index);
 
   return (
