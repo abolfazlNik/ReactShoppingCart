@@ -1,17 +1,12 @@
 import { getTodos } from "../api/products";
-import { useDispatch } from "react-redux";
-import { incrementCart } from "../store/slices/cartSlice";
 import ProductBox from "../components/ProductBox";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { Fragment, useEffect } from "react";
+import { TodoType } from "../types";
 
 const Products = () => {
   const { ref, inView } = useInView();
-  const dispatch = useDispatch();
-  const addToCart = (product) => {
-    dispatch(incrementCart({ item: product }));
-  };
 
   const {
     data,
@@ -40,7 +35,7 @@ const Products = () => {
 
   return (
     <>
-      <div className="mb-6">products</div>
+      <div className="mb-6">todos</div>
       <div className="grid grid-cols-5 gap-6">
         {isLoading ? (
           <>
@@ -55,14 +50,8 @@ const Products = () => {
           <>
             {data?.pages.map((group, i) => (
               <Fragment key={i}>
-                {group.map((product) => (
-                  <ProductBox
-                    key={product.id}
-                    product={product}
-                    addToCart={addToCart}
-                    showAddToCartButton={false}
-                    todosBox
-                  />
+                {group.map((product: TodoType) => (
+                  <ProductBox key={product.id} product={product} todosType />
                 ))}
               </Fragment>
             ))}
@@ -72,7 +61,7 @@ const Products = () => {
           </>
         )}
       </div>
-      <button ref={ref} onClick={fetchNextPage} disabled={!hasNextPage}>
+      <button ref={ref}>
         {isFetchingNextPage ? "loading more.." : "load more"}
       </button>
       <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div>

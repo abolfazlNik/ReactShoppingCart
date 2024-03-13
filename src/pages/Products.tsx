@@ -3,10 +3,11 @@ import { useDispatch } from "react-redux";
 import { incrementCart } from "../store/slices/cartSlice";
 import { useQuery } from "@tanstack/react-query";
 import ProductBox from "../components/ProductBox";
+import { ProductType } from "../types";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const addToCart = (product) => {
+  const addToCart = (product: ProductType) => {
     dispatch(incrementCart({ item: product }));
   };
 
@@ -32,7 +33,7 @@ const Products = () => {
           </>
         ) : (
           <>
-            {data?.map((product) => (
+            {data?.map((product: ProductType) => (
               <ProductBox
                 key={product.id}
                 product={product}

@@ -1,4 +1,4 @@
-const getTodos = async ({ pageParam }) => {
+const getTodos = async ({ pageParam }: { pageParam: number }) => {
   const response = await fetch(
     `${import.meta.env.VITE_URL_TODOS}/todos?_page=${pageParam}`
   );
@@ -10,7 +10,7 @@ const getProducts = async () => {
   return response.json();
 };
 
-async function product(id) {
+async function product(id: string) {
   const response = await fetch(
     `${import.meta.env.VITE_URL_PRODUCTS}/products/${id}`
   );

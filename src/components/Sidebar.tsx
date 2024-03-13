@@ -3,12 +3,14 @@ import { BiCartAlt } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import ProductBox from "./ProductBox";
 import { decreaseCart } from "../store/slices/cartSlice";
+import { RootState } from "../store/store";
+import { ProductType } from "../types";
 
 const Sidebar = () => {
-  const cartItems = useSelector((state) => state.cart.cart);
+  const cartItems = useSelector((state: RootState) => state.cart.cart);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const dispatch = useDispatch();
-  const removeCart = (product) => {
+  const removeCart = (product: { id: number }) => {
     dispatch(decreaseCart({ id: product.id }));
   };
 
@@ -26,7 +28,7 @@ const Sidebar = () => {
         )}
       </div>
 
-      <div className={`drawer drawer-end ${isDrawerOpen ? "open" : ""}`}>
+      <div className={`drawer drawer-end ${isDrawerOpen && "open"}`}>
         <input
           id="my-drawer-4"
           type="checkbox"
@@ -44,12 +46,10 @@ const Sidebar = () => {
           <div className="menu flex items-center space-y-3 p-4 w-80 min-h-full bg-base-200 text-base-content">
             {cartItems.length !== 0 ? (
               <>
-                {cartItems.map((item) => (
+                {cartItems.map((item: ProductType) => (
                   <ProductBox
                     key={item.id}
                     product={item}
-                    showAddToCartButton={false}
-                    showRemoveCartButton={true}
                     removeCart={removeCart}
                   />
                 ))}

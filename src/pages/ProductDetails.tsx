@@ -4,16 +4,21 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { incrementCart } from "../store/slices/cartSlice";
 import { BiSolidCartAdd } from "react-icons/bi";
+import { ProductType } from "../types";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useQuery({
-    queryFn: () => product(id),
+    queryFn: () => {
+      if (!!id) {
+        return product(id);
+      }
+    },
     queryKey: ["product", id],
   });
   const dispatch = useDispatch();
 
-  const addToCart = (product) => {
+  const addToCart = (product: ProductType) => {
     dispatch(incrementCart({ item: product }));
   };
 
@@ -35,7 +40,7 @@ const ProductDetails = () => {
               <span className="font-bold">price:</span> {data.price}
             </div>
             <div className="">
-              <span className="font-bold">ate:</span> {data.rating?.rate}
+              <span className="font-bold">rate:</span> {data.rating?.rate}
             </div>
           </div>
           <button
