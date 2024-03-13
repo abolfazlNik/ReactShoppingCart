@@ -14,7 +14,7 @@ const Header = () => {
   const { pathname } = location;
 
   return (
-    <header className="fixed top-0 w-full h-20 bg-blue-50 px-10 flex items-center justify-evenly">
+    <header className="fixed top-0 w-full h-20 bg-blue-50 px-10 flex items-center justify-evenly z-10">
       {links.map((link, index) => (
         <Link
           onMouseEnter={async () => {
