@@ -8,5 +8,6 @@ export type ProductType = {
 };
 export type TodoType = {
   id: number;
+  userId?: number;
   title: string;
 };

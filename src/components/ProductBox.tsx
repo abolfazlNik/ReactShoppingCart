@@ -1,5 +1,5 @@
 import { BiSolidCartAdd, BiX } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ProductType, TodoType } from "../types";
 
 type ProductBoxType = {
@@ -17,6 +17,9 @@ const ProductBox = ({
 }: ProductBoxType) => {
   const productData = product as ProductType;
   const todoData = product as TodoType;
+  const location = useLocation();
+  const { pathname } = location;
+
   return (
     <>
       <div className="border border-gray-200 bg-white max-auto rounded-lg px-4 py-7 w-56 h-64 flex space-y-5 flex-col justify-center overflow-hidden">
@@ -46,7 +49,12 @@ const ProductBox = ({
           </>
         ) : (
           <>
-            <div>{todoData.id}</div>
+            <div className=" flex justify-between items-center">
+              <div>{todoData.id}</div>
+              {pathname === "/lists" && (
+                <div className="">{todoData.userId}</div>
+              )}
+            </div>
             <div className="font-semibold text-center">{todoData.title}</div>
           </>
         )}

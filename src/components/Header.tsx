@@ -7,6 +7,7 @@ const links = [
   { title: "checkout", pathname: "/checkout" },
   { title: "products", pathname: "/products" },
   { title: "todos", pathname: "/todos" },
+  { title: "lists", pathname: "/lists" },
 ];
 
 const Header = () => {
@@ -30,8 +31,8 @@ const Header = () => {
           }}
           to={link.pathname}
           key={index}
-          className={`font-semibold text-gray-600 ${
-            pathname === link.pathname && "text-blue-700"
+          className={`font-semibold ${
+            pathname === link.pathname ? "text-blue-700" : "text-gray-600"
           }`}
         >
           {link.title}
