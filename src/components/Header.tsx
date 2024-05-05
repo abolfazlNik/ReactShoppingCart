@@ -7,7 +7,7 @@ const links = [
   { title: "checkout", pathname: "/checkout" },
   { title: "products", pathname: "/products" },
   { title: "todos", pathname: "/todos" },
-  { title: "lists", pathname: "/lists" },
+  { title: "posts", pathname: "/posts" },
 ];
 
 const Header = () => {

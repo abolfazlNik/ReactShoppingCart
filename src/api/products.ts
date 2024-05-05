@@ -5,6 +5,13 @@ const getTodos = async ({ pageParam }: { pageParam: number }) => {
   return response.json();
 };
 
+const getPost = async (page = 1) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_URL_TODOS}/comments?postId=` + page
+  );
+  return response.json();
+};
+
 const getProducts = async () => {
   const response = await fetch(`${import.meta.env.VITE_URL_PRODUCTS}/products`);
   return response.json();
@@ -18,4 +25,4 @@ async function product(id: string) {
   return data;
 }
 
-export { getProducts, product, getTodos };
+export { getProducts, product, getTodos, getPost };
