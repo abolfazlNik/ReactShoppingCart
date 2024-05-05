@@ -5,7 +5,7 @@ import Checkout from "../pages/Checkout";
 import ProductDetail from "../pages/ProductDetails";
 import Todos from "../pages/Todos";
 import App from "../App";
-import List from "../pages/List";
+import Post from "../pages/Post";
 
 const router = createBrowserRouter([
   {
@@ -53,10 +53,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/lists",
+        path: "/posts",
         element: (
           <div>
-            <List />
+            <Post />
           </div>
         ),
       },
