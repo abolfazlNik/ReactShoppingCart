@@ -5,6 +5,7 @@ import Checkout from "../pages/Checkout";
 import ProductDetail from "../pages/ProductDetails";
 import Todos from "../pages/Todos";
 import App from "../App";
+import List from "../pages/List";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,14 @@ const router = createBrowserRouter([
         element: (
           <div>
             <Todos />
+          </div>
+        ),
+      },
+      {
+        path: "/lists",
+        element: (
+          <div>
+            <List />
           </div>
         ),
       },

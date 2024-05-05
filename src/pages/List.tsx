@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { Fragment, useEffect } from "react";
 import { TodoType } from "../types";
 
-const Todos = () => {
+const List = () => {
   const { ref, inView } = useInView();
 
   const {
@@ -35,7 +35,7 @@ const Todos = () => {
 
   return (
     <>
-      <div className="mb-6">todos</div>
+      <div className="mb-6">links</div>
       <div className="grid grid-cols-5 gap-6">
         {isLoading ? (
           <>
@@ -69,4 +69,4 @@ const Todos = () => {
   );
 };
 
-export default Todos;
+export default List;
